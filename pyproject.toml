@@ -1,0 +1,24 @@
+[project]
+name = "qasimodo-specs"
+version = "0.0.8"
+description = "Specifications and protocol definitions for QAsimodo"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "protobuf>=5.29.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/qasimodo-ai/qasimodo-specs"
+Repository = "https://github.com/qasimodo-ai/qasimodo-specs"
+Issues = "https://github.com/qasimodo-ai/qasimodo-specs/issues"
+
+[build-system]
+requires = ["hatchling", "grpcio-tools>=1.68.1"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.hooks.custom]
+path = "scripts/build_proto.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qasimodo_specs"]

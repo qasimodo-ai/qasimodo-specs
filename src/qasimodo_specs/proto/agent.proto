@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package qasimodo.agent;
+
+message AgentMetadata {
+  string agent_id = 1;
+  string project_id = 2;
+  string run_id = 3;
+  string agent_version = 4;
+}
+
+message AgentTask {
+  AgentMetadata metadata = 1;
+  string testbook_id = 2;
+  string environment_id = 3;
+  string instructions = 4;
+  string core_base_url = 5;
+  string core_token = 6;
+}
+
+enum AgentResultKind {
+  AGENT_RESULT_KIND_STATUS = 0;
+  AGENT_RESULT_KIND_STEP = 1;
+}
+
+message AgentStepResult {
+  uint32 step_index = 1;
+  string status = 2;
+  string action_name = 3;
+  string model_actions_json = 4;
+  string model_outputs_json = 5;
+  string action_results_json = 6;
+  string observation = 7;
+  string error = 8;
+  string url = 9;
+  string screenshot_mime_type = 10;
+  bytes screenshot_bytes = 11;
+  string screenshot_path = 12;
+  string timestamp = 13;
+  string state_json = 14;
+}
+
+message AgentResult {
+  AgentMetadata metadata = 1;
+  AgentResultKind kind = 2;
+  string status = 3;
+  string message = 4;
+  string error = 5;
+  string started_at = 6;
+  string finished_at = 7;
+  string history_json = 8;
+  string testbook_id = 9;
+  string environment_id = 10;
+  AgentStepResult step = 11;
+  string partial_history_json = 12;
+}
+
+message AgentHeartbeat {
+  AgentMetadata metadata = 1;
+  string status = 2;
+  uint64 timestamp = 3;
+  repeated string capabilities = 4;
+}
