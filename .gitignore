@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Generated protobuf files
+*_pb2.py
+*_pb2.pyi
+
+# Virtual environments
+.venv
+
+# Nix/Direnv
+.direnv
+result
+result-dist
+
+# Helix
+.helix
+
+# git-hooks.nix
+.pre-commit-config.yaml
