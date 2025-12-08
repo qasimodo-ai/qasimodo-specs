@@ -51,7 +51,7 @@ jobs:
             accept-flake-config = true
       - name: Setup Cachix
         if: steps.check_version.outputs.version_changed == 'true' && steps.check_tag.outputs.exists == 'false'
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         with:
           name: qasimodo
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
