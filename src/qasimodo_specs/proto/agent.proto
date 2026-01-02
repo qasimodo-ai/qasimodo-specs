@@ -11,11 +11,9 @@ message AgentMetadata {
 
 message AgentTask {
   AgentMetadata metadata = 1;
-  string testbook_id = 2;
-  string environment_id = 3;
+  Testbook testbook = 2;
+  Environment environment = 3;
   string instructions = 4;
-  string core_base_url = 5;
-  string core_token = 6;
 }
 
 enum AgentResultKind {
@@ -60,4 +58,29 @@ message AgentHeartbeat {
   string status = 2;
   uint64 timestamp = 3;
   repeated string capabilities = 4;
+}
+
+message Testbook {
+  string id = 1;
+  string version = 2;
+  repeated string tasks = 3;
+  string project_id = 4;
+  string environment_id = 5;
+  string environment_name = 6;
+  string author_email = 7;
+  string updated_at = 8;
+}
+
+message EnvironmentVariable {
+  string id = 1;
+  string key = 2;
+  string value = 3;
+}
+
+message Environment {
+  string id = 1;
+  string name = 2;
+  string url = 3;
+  repeated EnvironmentVariable variables = 4;
+  string updated_at = 5;
 }
